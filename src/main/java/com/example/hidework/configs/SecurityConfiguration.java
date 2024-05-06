@@ -63,8 +63,10 @@ public class SecurityConfiguration {
                 .exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/unauthorized/").permitAll()
-                        .requestMatchers("/authorized/").fullyAuthenticated()
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/main/**").permitAll()
+                        .requestMatchers("/secured/**").fullyAuthenticated()
+                        .requestMatchers("/admin/**").fullyAuthenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
