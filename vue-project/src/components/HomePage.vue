@@ -23,7 +23,7 @@ export default{
 
 <template>
  <body>
-<div class="All">
+
   <header>
     <div class="logo">
       <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px">
@@ -40,13 +40,17 @@ export default{
   </header>
     <main id="main-content">
     <div class="page">
-      <br>
+    
       <div class="name">
+        <!-- <div class="img">
+          <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\close-up-hands-tying-thread.png">
+        </div> -->
         <div>
           <div class="size">
             <h1>Text</h1>
           </div>
-          <p>Text</p>
+          <p>Каждый товар, который вы найдете создается мастерами вручную.</p>
+          <p>Это сайт не только для продажи, но и для души.</p>
         </div>
         <div class="img">
           <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\close-up-hands-tying-thread.png">
@@ -54,45 +58,41 @@ export default{
       </div>
     </div>
   </main>
+  <section>
+        <div class="page1">
+          <h1>Скидки этого месяца!</h1>
+
+          <div class="text2">
+            <div class="slider midlle">
+              <div class="slides">
+                <input type="radio" name="r" id="r1" checked>
+                <input type="radio" name="r" id="r2">
+                <div class="navigation">
+                  <label for="r1" class="bar"></label>
+                  <label for="r2" class="bar"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+ </section>
  
   <footer class="footer-distributed">
 
 <div class="footer-left">
-
   <h3>Hidework</h3>
-
   <p class="footer-links">
     <a href="" class="link-1">Главная</a>
-
-    <a href="">О Каталог</a>
-
-    <a href=""></a>
-
-    <a href=""></a>
-
+    <a href="">Каталог</a>
   </p>
-
-  <p class="footer-company-name">Hidework © 2024</p>
 </div>
-
 <div class="footer-center">
-
-  <div>
-    <i class="fa fa-map-marker"></i>
-    <p class="tx1"><span>г.Ростов-на-Дону</span>ул.Гагарина 1</p>
-  </div>
-
-  <div>
-    <i class="fa fa-phone"></i>
-    <p class="tx1">+7-934-56-76-90</p>
-  </div>
-
   <div>
     <i class="fa fa-envelope"></i>
     <p class="tx1"><a class="a" href="">Hidework@gmail.com</a></p>
   </div>
-
 </div>
+
 
 <div class="footer-right">
   <div class="footer-icons">
@@ -158,53 +158,12 @@ export default{
     </a>
 
   </div>
-
+  <p class="footer-company-name">Hidework © 2024</p>
 </div>
-
-
 </footer>
-</div>
 </body>
 </template>
-
 <style scoped>
-.All{
-  display: column;
-    align-items: center;
-    justify-content:space-around;
-    width: 100%;
-    max-height:100vh;
-  
-
-}
-.logBT{
-  background: rgb(255,255,255);
-background: linear-gradient(241deg, rgba(0,254,255,1) 0%, rgba(252,0,255,1) 100%);
-  animation: gradient 5s infinite linear;
-  background-size: 400%;
-  width: auto;
-  height: auto;
-  /* background-color: rgb(203, 148, 255); */
-  color: aliceblue;
-  border-color: azure;
-  border-radius: 15px;
-  font-size: 15px;
-}
-.regBT{
-  background: rgb(255,255,255);
-  background: linear-gradient(241deg, rgba(0,254,255,1) 0%, rgba(252,0,255,1) 100%);
-  animation: gradient 5s infinite linear;
-  background-size: 400%;
-  width: auto;
-  height: auto;
-  color: aliceblue;
-  background-color: rgb(203, 148, 255);
-  border-color: azure;
-  border-radius: 15px;
-  font-size: 15px;
-  
-
-}
 
 header {
   width: 100%;
@@ -216,7 +175,7 @@ header {
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
- background-color: rgb(195,228,175)
+ background-color: rgb(180,180,166)
 }
 .text {
   text-decoration: none;
@@ -238,6 +197,20 @@ header {
 }
 .size {
   font-size: 80px;
+  
+}
+.page{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgb(180, 180, 166)
+
 }
 
 .name {
@@ -254,12 +227,8 @@ header {
 .img {
   width: 50%;
   float: none;
-
   padding-left: 15px;
   padding-right: 15px;
-
-
-
   margin: 1em 0 1em 0;
   flex-wrap: wrap;
 }
@@ -267,7 +236,6 @@ header {
 .name img {
   width: 100%;
 }
-
 
 .Reg_log{
   width: 100%;
@@ -295,8 +263,8 @@ header {
 }
 .footer-distributed {
 
-background: #666;
-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+background: rgba(71, 59, 50);
+box-shadow:  rgba(71, 59, 50);
 width: 100%;
 text-align: left;
 font: bold 16px sans-serif;
@@ -304,7 +272,6 @@ padding: 55px 50px;
 width: 100%;
 display: flex;
 display: inline-block;
-background: #333;
 height: 50vh;
 text-align: center;
 font-size: 22px;
@@ -329,10 +296,6 @@ width: 100%;
 color: #ffffff;
 font: normal 36px 'Open Sans', cursive;
 margin: 0;
-}
-
-.footer-distributed h3 span {
-color: lightseagreen;
 }
 
 /* Footer links */
@@ -362,20 +325,6 @@ margin: 0;
 .footer-distributed .footer-center {
 width: 35%;
 }
-
-.footer-distributed .footer-center i {
-background-color: #33383b;
-color: #ffffff;
-font-size: 25px;
-width: 38px;
-height: 38px;
-border-radius: 50%;
-text-align: center;
-line-height: 42px;
-margin: 10px 15px;
-vertical-align: middle;
-}
-
 .footer-distributed .footer-center i.fa-envelope {
 font-size: 17px;
 line-height: 38px;
@@ -398,7 +347,6 @@ line-height: 2;
 
 .footer-distributed .footer-center .tx1 a {
 color: rgb(255, 255, 255);
-background: -webkit-linear-gradient(#1a6dff, #c822ff);
 text-decoration: none;
 
 }

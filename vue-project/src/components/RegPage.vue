@@ -17,7 +17,6 @@ export default{
     }
   },
   methods:{
-    
     async signupUser() {
       const newUser = {
         userName: this.userName,
@@ -40,8 +39,6 @@ export default{
         console.log(this.userName);
       }
     },
-    
-    
   },
   // created() {
   //   api.get('unauthorized/get/users/')
@@ -72,28 +69,33 @@ export default{
 }
 </script>
 
+<!-- html -->
 <template>
-<div class="All">
+  <header>
+  <div class="logo">
+    <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px"></a>
+    </div>
   <nav>
       <ul class="nav">
         <li><a href="">Каталог</a></li>
         <li><a href="">Корзина</a></li>
         <li><a href=""></a></li>
         <li><button class="logBT"  @click="page_log()">Войти</button></li>
-        <li>  <button class="regBT" @click="page_reg()" href="/reg">Регистрация</button></li>
+        <li><button>Регистрация</button></li>
       </ul>
     </nav>
-  <header>
+
     <h2>{{ errorMessage }}</h2>
   </header>
   <main>
+ 
     <div class="reg_window">
+      <div class="text"><p>Регистрация</p></div>
         <div class="reg_input">
             <input type="text" v-model="userName" placeholder="name">
             <input type="number" v-model="userAge" placeholder="age">
             <input type="email" v-model="userEmail" placeholder="email">
             <input type="password" v-model="userPassword" placeholder="password">
-            
         </div>
         <div class="reg_Button">
             <button class="regBT" @click="signupUser()">
@@ -207,13 +209,8 @@ export default{
     </a>
 
   </div>
-
 </div>
-
-
 </footer>
-</div>
-  
 </template>
 
 
@@ -221,49 +218,43 @@ export default{
 
 
 <style scoped>
-header{
-  font-size: 40px;
-  color: red;
-
-}
-input{
-  margin-bottom: 1vh;
-  background: rgb(255,255,255);
-  background: linear-gradient(241deg, rgb(239, 161, 255) 0%, rgb(255, 255, 255) 100%);
-  animation: gradient 2s infinite linear;
-  background-size: 400%;
-  height: 5vh;
-  width: 30vh;
-  border-color:rgba(252,0,255,1); 
-  border-radius: 15px;
+header {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  font-size: 32px;
+  box-sizing: border-box;
+  background-color: rgb(180,180,166)
 }
-.All{
-  display: column;
-    align-items: center;
-    justify-content:space-around;
-    width: 100%;
-    max-height:100vh;
-  
-
+.nav {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-
-.regBT{
-  background: rgb(255,255,255);
-  background: linear-gradient(241deg, rgba(0,254,255,1) 0%, rgba(252,0,255,1) 100%);
-  animation: gradient 5s infinite linear;
-  background-size: 400%;
-  width: auto;
-  height: auto;
-  color: aliceblue;
-  background-color: rgb(203, 148, 255);
-  border-color: azure;
-  border-radius: 35px;
-  font-size: 35px;
-  
-
+.nav>li a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #000;
+}
+.size {
+  font-size: 80px;
+}
+.text{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
 }
 
 .reg_window{
@@ -274,7 +265,6 @@ input{
   justify-content:center;
   align-items: center;
   flex-direction: column;
- 
 }
 
 .reg_input{
@@ -302,6 +292,149 @@ input{
   width: auto;
 }
 
+.footer-distributed {
+background: rgba(71, 59, 50);
+box-shadow:  rgba(71, 59, 50);
+width: 100%;
+text-align: left;
+font: bold 16px sans-serif;
+padding: 55px 50px;
+width: 100%;
+display: flex;
+display: inline-block;
+height: 50vh;
+text-align: center;
+font-size: 22px;
+font-weight: 700;
+text-decoration: underline;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+display: inline-block;
+vertical-align: top;
+}
+
+/* Footer left */
+.footer-distributed .footer-left {
+width: 100%;
+}
+
+/* The company logo */
+.footer-distributed h3 {
+color: #ffffff;
+font: normal 36px 'Open Sans', cursive;
+margin: 0;
+}
+
+.footer-distributed h3 span {
+color: lightseagreen;
+}
+
+/* Footer links */
+.footer-distributed .footer-links {
+color: #ffffff;
+margin: 20px 0 12px;
+padding: 0;
+}
+
+.footer-distributed .footer-links a {
+display: inline-block;
+line-height: 1.8;
+font-size: 20px;
+font-weight: 400;
+text-decoration: none;
+color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+color: #222;
+font-size: 14px;
+font-weight: normal;
+margin: 0;
+}
+
+/* Footer Center */
+.footer-distributed .footer-center {
+width: 35%;
+}
+
+.footer-distributed .footer-center i {
+background-color: #33383b;
+color: #ffffff;
+font-size: 25px;
+width: 38px;
+height: 38px;
+border-radius: 50%;
+text-align: center;
+line-height: 42px;
+margin: 10px 15px;
+vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+font-size: 17px;
+line-height: 38px;
+}
+
+.footer-distributed .footer-center .tx1 {
+display: inline-block;
+color: #ffffff;
+font-weight: 400;
+vertical-align: middle;
+margin: 0;
+}
+
+.footer-distributed .footer-center .tx1 span {
+display: block;
+font-weight: normal;
+font-size: 14px;
+line-height: 2;
+}
+
+.footer-distributed .footer-center .tx1 a {
+color: rgb(255, 255, 255);
+background: -webkit-linear-gradient(#1a6dff, #c822ff);
+text-decoration: none;
+
+}
+
+.footer-distributed .footer-links a:before {
+content: "|";
+font-weight: 300;
+font-size: 20px;
+left: 0;
+color: #fff;
+display: inline-block;
+padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+content: none;
+}
+
+.footer-distributed .footer-right {
+width: 100%;
+}
+
+.footer-distributed .footer-icons {
+margin-top: 100px;
+}
+
+.footer-distributed .footer-icons a {
+display: inline-block;
+max-width: 1180px;
+
+cursor: pointer;
+font-size: 20px;
+color: #ffffff;
+text-align: center;
+flex-wrap: wrap;
+line-height: 35px;
+margin-right: 30px;
+margin-bottom: 15px;
+}
 @keyframes gradient {
     0% {
         background-position: 80% 0%;
