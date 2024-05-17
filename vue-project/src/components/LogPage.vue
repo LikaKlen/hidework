@@ -10,9 +10,7 @@ export default{
       users: [],
       userName: '',
       errorMessage: '',
-      
       userPassword: ''
-      
     }
   },
   methods:{
@@ -24,10 +22,6 @@ export default{
       }
       try {
         const response = await api.post('/auth/signin', User);
-        // .then(function (response){
-        // this.somevar = response ;
-        // console.log(response.data.foo);
-        // })
         console.log('Успешно авторизован:',User);
         window.location.href ="/auth/main";
       } catch (error) {
@@ -38,30 +32,6 @@ export default{
     
     
   },
-  // created() {
-  //   api.get('unauthorized/get/users/')
-  //     .then(response => {
-  //       this.users = response.data;
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-    
-  // },
-  // created(){
-  //   const newUser = {
-  //     userName: '',
-  //     userAge: '',
-  //     userPass: ''
-  //     }
-  //   api.post('/auth/signup', newUser)
-  //     .then(response => {
-  //       this.users = response.data;
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
 
   
 }
@@ -70,19 +40,17 @@ export default{
 <template>
 <header>
     <div class="logo">
-      <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px"></a>
+      <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px"></a>
       
     </div>
     <nav>
       <ul class="nav">
         <li><a href="">Каталог</a></li>
         <li><a href="">Корзина</a></li>
-        <li><a href=""></a></li>
-        <li><button class="logBT"  @click="page_log()">Войти</button></li>
-        <li> <button class="regBT" @click="page_reg()" href="/reg">Регистрация</button></li>
+        <li><a href="/log">Войти</a></li>
+        <li><a href="/reg">Регистрация</a></li>
       </ul>
     </nav>
-    <h2>{{ errorMessage }}</h2>
   </header>
   <main>
   
@@ -123,21 +91,9 @@ export default{
     <a href=""></a>
 
   </p>
-
-  <p class="footer-company-name">Hidework © 2024</p>
 </div>
 
 <div class="footer-center">
-
-  <div>
-    <i class="fa fa-map-marker"></i>
-    <p class="tx1"><span>г.Ростов-на-Дону</span>ул.Гагарина 1</p>
-  </div>
-
-  <div>
-    <i class="fa fa-phone"></i>
-    <p class="tx1">+7-934-56-76-90</p>
-  </div>
 
   <div>
     <i class="fa fa-envelope"></i>
@@ -209,6 +165,7 @@ export default{
         </svg></i>
     </a>
   </div>
+  <p class="footer-company-name">Hidework © 2024</p>
 </div>
 </footer>
 </template>
@@ -384,7 +341,6 @@ line-height: 2;
 
 .footer-distributed .footer-center .tx1 a {
 color: rgb(255, 255, 255);
-background: -webkit-linear-gradient(#1a6dff, #c822ff);
 text-decoration: none;
 
 }

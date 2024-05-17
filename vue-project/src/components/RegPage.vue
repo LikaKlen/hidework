@@ -12,6 +12,7 @@ export default{
       userAge: 0,
       userEmail:'',
       userPassword: '',
+
       errorMessage: ''
       
     }
@@ -23,6 +24,10 @@ export default{
         age: this.userAge,
         email:this.userEmail,
         password: this.userPassword
+      }
+      if(this.userPassword<8){
+        this.errorMessage ="Слишком мало цифр"
+        return
       }
       try {
         const response = await api.post('/auth/signup', newUser);
@@ -40,30 +45,6 @@ export default{
       }
     },
   },
-  // created() {
-  //   api.get('unauthorized/get/users/')
-  //     .then(response => {
-  //       this.users = response.data;
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-    
-  // },
-  // created(){
-  //   const newUser = {
-  //     userName: '',
-  //     userAge: '',
-  //     userPass: ''
-  //     }
-  //   api.post('/auth/signup', newUser)
-  //     .then(response => {
-  //       this.users = response.data;
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
 
   
 }
@@ -73,19 +54,16 @@ export default{
 <template>
   <header>
   <div class="logo">
-    <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px"></a>
+    <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px"></a>
     </div>
   <nav>
       <ul class="nav">
         <li><a href="">Каталог</a></li>
         <li><a href="">Корзина</a></li>
-        <li><a href=""></a></li>
-        <li><button class="logBT"  @click="page_log()">Войти</button></li>
-        <li><button>Регистрация</button></li>
+        <li><a href="/log">Войти</a></li>
+        <li><a href="/reg">Регистрация</a></li>
       </ul>
     </nav>
-
-    <h2>{{ errorMessage }}</h2>
   </header>
   <main>
  

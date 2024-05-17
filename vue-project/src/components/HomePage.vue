@@ -26,15 +26,14 @@ export default{
 
   <header>
     <div class="logo">
-      <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px">
+      <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px">
     </div>
     <nav>
       <ul class="nav">
         <li><a href="">Каталог</a></li>
         <li><a href="">Корзина</a></li>
-        <li><a href=""></a></li>
-        <li><button class="logBT"  @click="page_log()">Войти</button></li>
-        <li>  <button class="regBT" @click="page_reg()" href="/reg">Регистрация</button></li>
+        <li><a href="/log">Войти</a></li>
+        <li>  <a href="/reg">Регистрация</a></li>
       </ul>
     </nav>
   </header>
@@ -42,9 +41,6 @@ export default{
     <div class="page">
     
       <div class="name">
-        <!-- <div class="img">
-          <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\close-up-hands-tying-thread.png">
-        </div> -->
         <div>
           <div class="size">
             <h1>Text</h1>
@@ -53,27 +49,31 @@ export default{
           <p>Это сайт не только для продажи, но и для души.</p>
         </div>
         <div class="img">
-          <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\close-up-hands-tying-thread.png">
+          <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\close-up-hands-tying-thread.png">
         </div>
       </div>
     </div>
   </main>
   <section>
+    <div class="text"><h1>Скидки этого месяца!</h1></div>
         <div class="page1">
-          <h1>Скидки этого месяца!</h1>
-
-          <div class="text2">
-            <div class="slider midlle">
-              <div class="slides">
-                <input type="radio" name="r" id="r1" checked>
-                <input type="radio" name="r" id="r2">
-                <div class="navigation">
-                  <label for="r1" class="bar"></label>
-                  <label for="r2" class="bar"></label>
-                </div>
-              </div>
-            </div>
+          <div class="block">
+            <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Earrings.jpg">
+            <h2>Серьги</h2>
+            <p class="discount"><span>1000₽</span> 700₽ </p>
           </div>
+          <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Beads.jpg">
+            <h2>Бусы</h2>
+            <p class="discount"><span>1200₽</span> 900₽ </p>
+          </div>
+          <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Bracelets.jpg">
+            <h2>Браслеты</h2>
+            <p class="discount"><span>1500₽</span> 1000₽ </p>
+          </div>
+        </div>
         </div>
  </section>
  
@@ -261,6 +261,62 @@ header {
   height: auto;
   width: auto;
 }
+
+.page1{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.text{
+  
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+}
+.block{
+  width: 100%;
+  max-width: 1180px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  row-gap: 50px;
+}
+
+.block .block-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.block-item h2 {
+  margin: 15px 0;
+}
+
+.block-item p {
+  margin: 0 0 10px 0;
+}
+
+.block-item .discount {
+  color: red;
+}
+
+.block-item span {
+  color: #000;
+  text-decoration: line-through;
+}
+
+
+
+
+
 .footer-distributed {
 
 background: rgba(71, 59, 50);

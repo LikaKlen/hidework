@@ -25,7 +25,7 @@ export default{
   
   <header>
     <div class="logo">
-      <img src="C:\Users\Admin\Downloads\hidework\vue-project\assets\picture\image2.png" height="100px">
+      <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px">
     </div>
     <nav>
       <ul class="nav">
