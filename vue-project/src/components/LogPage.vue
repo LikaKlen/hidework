@@ -55,25 +55,23 @@ export default{
   <main>
   
     <div class="page">
-    <p> Вход</p>
-    </div>
- 
     <div class="reg_window">
         <div class="reg_input">
+        <h2>Вход на аккаунт</h2>
+        <p><label for="Email" class="floatLabel">Email</label>
             <input type="text" v-model="userName" placeholder="name">
-            
+            </p>
+           <p> <label for="password" class="floatLabel">Password</label>
             <input type="password" v-model="userPassword" placeholder="password">
-            
+            </p>
         </div>
         <div class="reg_Button">
             <button class="regBT" @click="signupUser()">
-                отправить
+                Войти
             </button>
-           
-            
         </div>
+      </div>
     </div>
-    
   </main>
   <footer class="footer-distributed">
 
@@ -204,28 +202,44 @@ header {
 }
 
 .reg_window{
-  width: 100%;
-  height: 100%;
-  margin-top: 15%;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  flex-direction: column;
-}
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 50px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 2px;
+  h2 {
+    margin:0 0 50px 0;
+    padding:10px;
+    text-align:center;
+    font-size:30px;
+    color:darken(#e5e5e5, 50%);
+    border-bottom:solid 1px #e5e5e5;
+  }
 
-.reg_input{
-  width: 100%;
-  height: 100%;
-  margin-top: 10vh;
-  margin-bottom: 5%;
-  flex-direction: column;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  font-size: 35px;
-  color: blueviolet;
-  font-weight:bold;
-}
+  p {
+    margin: 0 0 3em 0;
+    position: relative;
+  }
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    margin:0;
+  }
+  input[type="text"],
+  input[type="password"] {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    font-size: 1.6em;
+    padding: .8em .5em;
+    border-radius: 2px;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background: #fff
+  }}
 .log{
   height: auto;
   width: auto;
