@@ -58,10 +58,10 @@ export default{
     <div class="reg_window">
         <div class="reg_input">
         <h2>Вход на аккаунт</h2>
-        <p><label for="Email" class="floatLabel">Email</label>
-            <input type="text" v-model="userName" placeholder="name">
+        <p><label for="text" class="floatLabel">Логин</label>
+            <input type="text" v-model="userName" placeholder="Login">
             </p>
-           <p> <label for="password" class="floatLabel">Password</label>
+           <p> <label for="password" class="floatLabel">Пароль</label>
             <input type="password" v-model="userPassword" placeholder="password">
             </p>
         </div>
