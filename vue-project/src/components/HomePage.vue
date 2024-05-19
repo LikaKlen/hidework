@@ -43,10 +43,11 @@ export default{
       <div class="name">
         <div>
           <div class="size">
-            <h1>Text</h1>
+            <h>Приветствуем вас!</h>
           </div>
           <p>Каждый товар, который вы найдете создается мастерами вручную.</p>
           <p>Это сайт не только для продажи, но и для души.</p>
+          
         </div>
         <div class="img">
           <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\close-up-hands-tying-thread.png">
@@ -82,7 +83,7 @@ export default{
 <div class="footer-left">
   <h3>Hidework</h3>
   <p class="footer-links">
-    <a href="" class="link-1">Главная</a>
+    <a href="/home" class="link-1">Главная</a>
     <a href="">Каталог</a>
   </p>
 </div>
@@ -181,6 +182,9 @@ header {
   text-decoration: none;
   color: #000;
   font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav {

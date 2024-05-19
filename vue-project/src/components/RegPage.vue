@@ -68,16 +68,27 @@ export default{
   <main>
  
     <div class="reg_window">
-      <div class="text"><p>Регистрация</p></div>
         <div class="reg_input">
-            <input type="text" v-model="userName" placeholder="name">
-            <input type="number" v-model="userAge" placeholder="age">
-            <input type="email" v-model="userEmail" placeholder="email">
-            <input type="password" v-model="userPassword" placeholder="password">
+          <h2>Регистрация</h2>
+          <p>
+          <label for="text" class="floatLabel">Введите Логин</label>
+            <input type="text" v-model="userName" placeholder="Login">
+          </p>
+        <p><label for="number" class="floatLabel">Введите возраст</label>
+            <input type="number" v-model="userAge" placeholder="Age">
+          </p>
+            <p><label for="Email" class="floatLabel">Введите почту</label>
+            <input type="email" v-model="userEmail" placeholder="Email"></p>
+          <p>
+            <label for="password" class="floatLabel">Введите пароль</label>
+            <input type="password" v-model="userPassword" placeholder="password"></p>
+            <p>
+            <label for="password" class="floatLabel">Повторите пароль</label>
+            <input type="password" v-model="userPassword" placeholder="password"></p>
         </div>
         <div class="reg_Button">
             <button class="regBT" @click="signupUser()">
-                отправить
+               Зарегистрироваться
             </button>
             
         </div>
@@ -226,28 +237,43 @@ header {
 }
 
 .reg_window{
-  width: 100%;
-  height: 100%;
-  margin-top: 15%;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.reg_input{
-  width: 100%;
-  height: 100%;
-  margin-top: 10vh;
-  margin-bottom: 5%;
-  flex-direction: column;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  font-size: 35px;
-  color: blueviolet;
-  font-weight:bold;
-}
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 50px auto 0;
+  box-shadow: 0 0 1em  rgb(207, 173, 147);
+  border-radius: 2px;
+  h2 {
+    margin:0 0 50px 0;
+    padding:10px;
+    text-align:center;
+    font-size:30px;
+    color:darken(#e5e5e5, 50%);
+    border-bottom:solid 1px #e5e5e5;
+  }
+  p {
+    margin: 0 0 3em 0;
+    position: relative;
+  }
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    margin:0;
+  }
+  input[type="text"],
+  input[type="password"],input[type="number"],input[type="email"]   {
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    font-size: 1.6em;
+    padding: .8em .5em;
+    border-radius: 2px;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,input[type="number"]:focus,input[type="email"]:focus  {
+    background: #fff
+  }}
 .log{
   height: auto;
   width: auto;
@@ -258,6 +284,26 @@ header {
 .reg{
   height: auto;
   width: auto;
+  
+}
+.reg_Button{
+  justify-content: center;
+  display: flex;
+}
+.regBT{
+ 
+    text-align:center;
+    font-size:30px;
+    border-bottom:solid 1px #e5e5e5;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-size: 2em;
+    line-height: 1.6em;
+    margin: 2em 0 0;
+    outline: none;
+  background: rgba(148,175,101,1);
 }
 
 .footer-distributed {

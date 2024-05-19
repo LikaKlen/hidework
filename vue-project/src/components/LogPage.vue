@@ -206,7 +206,7 @@ header {
   padding: 4em 4em 2em;
   max-width: 400px;
   margin: 50px auto 0;
-  box-shadow: 0 0 1em #222;
+  box-shadow: 0 0 1em  rgb(207, 173, 147);
   border-radius: 2px;
   h2 {
     margin:0 0 50px 0;
@@ -240,6 +240,24 @@ header {
   input[type="password"]:focus {
     background: #fff
   }}
+.reg_Button{
+  justify-content: center;
+  display: flex;
+}
+  .regBT{
+ text-align:center;
+ font-size:30px;
+ border-bottom:solid 1px #e5e5e5;
+ border-radius: 2px;
+ border: none;
+ cursor: pointer;
+ display: block;
+ font-size: 2em;
+ line-height: 1.6em;
+ margin: 2em 0 0;
+ outline: none;
+background: rgba(148,175,101,1);
+}
 .log{
   height: auto;
   width: auto;
