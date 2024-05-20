@@ -12,7 +12,9 @@ export default{
       userAge: 0,
       userEmail:'',
       userPassword: '',
-
+      repeatedPassword: '',
+      passwordError: false,
+  repeatPasswordError: false,
       errorMessage: ''
       
     }
@@ -25,10 +27,16 @@ export default{
         email:this.userEmail,
         password: this.userPassword
       }
-      if(this.userPassword<8){
-        this.errorMessage ="Слишком мало цифр"
-        return
-      }
+      if (this.userPassword.length < 8) {
+        this.passwordError = true;
+        this.errorMessage = "Пароль должен содержать не менее 8 символов";
+        return;
+      }else{this.passwordError = false;}
+      if (this.userPassword !== this.repeatedPassword) { // Проверка на совпадение пароля
+        this.repeatPasswordError = true;
+        this.errorMessage = "Пароли не совпадают";
+        return;
+      }else{this.repeatPasswordError = false;}
       try {
         const response = await api.post('/auth/signup', newUser);
         console.log('Успешно зарегистрирован:',newUser);
@@ -81,10 +89,14 @@ export default{
             <input type="email" v-model="userEmail" placeholder="Email"></p>
           <p>
             <label for="password" class="floatLabel">Введите пароль</label>
-            <input type="password" v-model="userPassword" placeholder="password"></p>
+            <input type="password" v-model="userPassword" placeholder="Password">
+            <span class="error-message" v-if="passwordError">Пароль должен содержать не менее 8 символов</span>
+        </p>
             <p>
-            <label for="password" class="floatLabel">Повторите пароль</label>
-            <input type="password" v-model="userPassword" placeholder="password"></p>
+            <label for="repeatedPassword" class="floatLabel">Повторите пароль</label>
+            <input type="password" v-model="repeatedPassword" placeholder="Repeated password">
+            <span class="error-message" v-if="repeatPasswordError">Пароли не совпадают</span>
+        </p>
         </div>
         <div class="reg_Button">
             <button class="regBT" @click="signupUser()">
@@ -273,7 +285,14 @@ header {
   input[type="text"]:focus,
   input[type="password"]:focus,input[type="number"]:focus,input[type="email"]:focus  {
     background: #fff
-  }}
+  }
+  .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+  }
 .log{
   height: auto;
   width: auto;

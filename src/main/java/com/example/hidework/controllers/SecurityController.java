@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +58,8 @@ public class SecurityController {
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody SigninRequest signinRequest) {
         UserDetails user = userService.loadUserByUsername(signinRequest.getUserName());
+//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String hashedPassword=passwordEncoder.encode(signinRequest.getPassword());
 
         if (user == null || !user.getPassword().equals(signinRequest.getPassword())) {
             log.info("Ошибка авторизации пользователя " + signinRequest.getUserName());

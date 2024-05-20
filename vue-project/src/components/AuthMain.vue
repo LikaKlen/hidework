@@ -39,14 +39,7 @@ export default{
 
   </header>
   <main>
-    <div class="Reg_log">
-      <div class="log">
-     
-    </div>
-    <div class ="reg">
-      
-    </div>
-    </div>
+    
     
   </main>
   <footer class="footer-distributed">
@@ -66,20 +59,9 @@ export default{
 
   </p>
 
-  <p class="footer-company-name">Hidework © 2024</p>
 </div>
 
 <div class="footer-center">
-
-  <div>
-    <i class="fa fa-map-marker"></i>
-    <p class="tx1"><span>г.Ростов-на-Дону</span>ул.Гагарина 1</p>
-  </div>
-
-  <div>
-    <i class="fa fa-phone"></i>
-    <p class="tx1">+7-934-56-76-90</p>
-  </div>
 
   <div>
     <i class="fa fa-envelope"></i>
@@ -152,7 +134,7 @@ export default{
     </a>
 
   </div>
-
+  <p class="footer-company-name">Hidework © 2024</p>
 </div>
 
 

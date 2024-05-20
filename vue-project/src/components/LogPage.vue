@@ -168,10 +168,6 @@ export default{
 </footer>
 </template>
 
-
-
-
-
 <style scoped>
 header {
   width: 100%;
