@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 public class HideworkApplication  {
 
     public static ApplicationContext context;
-    public static User currentUser = null;
+    public static User currentUser;
     public static void main(String[] args) {
         SpringApplication.run(HideworkApplication.class, args);
     }
