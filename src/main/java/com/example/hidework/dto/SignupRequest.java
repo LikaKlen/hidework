@@ -9,4 +9,9 @@ public class SignupRequest {
     private String email;
     private int userAge;
     private String role;
+//    public SignupRequest(String userName, String password) {
+//        this.userName = userName;
+//        this.password = password;
+//    }
+
 }

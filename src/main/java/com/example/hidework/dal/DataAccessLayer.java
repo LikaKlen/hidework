@@ -1,6 +1,7 @@
 package com.example.hidework.dal;
 
 import com.example.hidework.models.*;
+import com.example.hidework.service.UserDetailsServiceImpl;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -10,6 +11,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.hidework.models.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -18,11 +21,11 @@ import java.util.List;
 @Getter
 public class DataAccessLayer {
     private final SessionFactory sessionFactory;
-
     @Autowired
     public DataAccessLayer(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     Session session = null;
     //USER
     public void addUser(User newUser) {
@@ -58,18 +61,20 @@ public class DataAccessLayer {
         if (userFrom != null) {
             return "Выберите другую почту";
         }
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-        byte[] bytes = md5.digest(user.getPassword().getBytes());
-        StringBuilder builder = new StringBuilder();
-        for (byte b : bytes) {
-            builder.append(String.format("%02X", b));
-        }
-        user.setPassword(builder.toString());
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+//        MessageDigest md5 = null;
+//        try {
+//            md5 = MessageDigest.getInstance("MD5");
+//        } catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException(e);
+//        }
+//        byte[] bytes = md5.digest(user.getPassword().getBytes());
+//        StringBuilder builder = new StringBuilder();
+//        for (byte b : bytes) {
+//            builder.append(String.format("%02X", b));
+//        }
+//        user.setPassword(builder.toString());
 
 //        user.setPassword(userService.hashUserPassword(user.getPassword()));
         session.persist(user);

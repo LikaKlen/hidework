@@ -9,16 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.PrinterJob;
+import java.io.IOException;
 import java.util.Objects;
 
 @RequestMapping("/auth")
@@ -39,6 +37,7 @@ public class SecurityController {
     private PasswordEncoder passwordEncoder;
     @PostMapping("/signup")
     ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
+//        String encodedPassword = passwordEncoder.encode(signupRequest.getPassword());
         String serviceResult = userService.newUser(signupRequest);
         if (signupRequest.getUserName() == null || signupRequest.getUserName().trim().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Введите имя");
@@ -61,7 +60,7 @@ public class SecurityController {
 
         String hashedPassword=passwordEncoder.encode(signinRequest.getPassword());
 
-        if (user == null || !user.getPassword().equals(signinRequest.getPassword())) {
+        if (Objects.equals(user,null) || !passwordEncoder.matches(signinRequest.getPassword(), user.getPassword())) {
             log.info("Ошибка авторизации пользователя " + signinRequest.getUserName());
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -79,24 +78,6 @@ public class SecurityController {
         return ResponseEntity.ok(jwt);
     }
 
-    @PostMapping("/logout")
-//    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null) {
-//            String userName = authentication.getName();
-//            String jwt = jwtCore.generateNewToken(userName);
-//
-//            // Добавляем текущий токен в blacklist
-//            jwtCore.addToBlacklist(request.getHeader("Authorization").replace("Bearer ", ""));
-//
-//            // Устанавливаем заголовок авторизации с новым токеном
-//            response.setHeader("Authorization", "Bearer " + jwt);
-//
-//            return ResponseEntity.ok("Выход прошёл успешно. Токен был обновлен");
-//        } else {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Вы не авторизованы");
-//        }
-//    }
     ResponseEntity<?> logout(){
         HideworkApplication.currentUser=null;
         return ResponseEntity.ok("");

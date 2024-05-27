@@ -14,7 +14,11 @@ export default{
       userPassword: '',
       repeatedPassword: '',
       passwordError: false,
-  repeatPasswordError: false,
+      loginError: false,
+      repeatPasswordError: false,
+      emailPattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      emailError: false,
+      email1Error: false,
       errorMessage: ''
       
     }
@@ -23,20 +27,45 @@ export default{
     async signupUser() {
       const newUser = {
         userName: this.userName,
-        age: this.userAge,
+        userAge: this.userAge,
         email:this.userEmail,
         password: this.userPassword
       }
+      //LOGIN
+      if (this.userName.length ==0 ) {
+        this.loginError = true;
+        this.errorMessage = "Логин не верный";
+        return;
+      }else{this.loginError = false;}
+//PASSWORD
       if (this.userPassword.length < 8) {
         this.passwordError = true;
         this.errorMessage = "Пароль должен содержать не менее 8 символов";
         return;
       }else{this.passwordError = false;}
+
       if (this.userPassword !== this.repeatedPassword) { // Проверка на совпадение пароля
         this.repeatPasswordError = true;
         this.errorMessage = "Пароли не совпадают";
         return;
       }else{this.repeatPasswordError = false;}
+//EMAIL
+      if (!this.emailPattern.test(this.userEmail)) {
+       this.emailError = true;
+       this.errorMessage = "Неверный формат электронной почты";
+       return;
+       } else {
+         this.emailError = false;
+        }
+
+      if (this.userEmail.length === 0) {
+       this.email1Error = true;
+      this.errorMessage = "Введите электронную почту";
+      return;
+      } else {
+      this.email1Error = false;
+     }
+
       try {
         const response = await api.post('/auth/signup', newUser);
         console.log('Успешно зарегистрирован:',newUser);
@@ -81,12 +110,15 @@ export default{
           <p>
           <label for="text" class="floatLabel">Введите Логин</label>
             <input type="text" v-model="userName" placeholder="Login">
+            <span class="error-message" v-if="loginError">Введите логин</span>
           </p>
         <p><label for="number" class="floatLabel">Введите возраст</label>
             <input type="number" v-model="userAge" placeholder="Age">
           </p>
             <p><label for="Email" class="floatLabel">Введите почту</label>
             <input type="email" v-model="userEmail" placeholder="Email"></p>
+            <span class="error-message" v-if="emailError">Неверный формат электронной почты</span>
+            <span class="error-message" v-if="email1Error">Введите адрес электронной почты</span>
           <p>
             <label for="password" class="floatLabel">Введите пароль</label>
             <input type="password" v-model="userPassword" placeholder="Password">
@@ -114,7 +146,7 @@ export default{
   <h3>Hidework</h3>
 
   <p class="footer-links">
-    <a href="" class="link-1">Главная</a>
+    <a href="/home" class="link-1">Главная</a>
 
     <a href="">О Каталог</a>
 
@@ -275,7 +307,9 @@ header {
     margin:0;
   }
   input[type="text"],
-  input[type="password"],input[type="number"],input[type="email"]   {
+  input[type="password"],
+  input[type="number"],
+  input[type="email"]   {
     background: #fff;
     border: 1px solid #dbdbdb;
     font-size: 1.6em;
@@ -283,7 +317,9 @@ header {
     border-radius: 2px;
   }
   input[type="text"]:focus,
-  input[type="password"]:focus,input[type="number"]:focus,input[type="email"]:focus  {
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus  {
     background: #fff
   }
   .error-message {

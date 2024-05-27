@@ -70,14 +70,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/admin/**").fullyAuthenticated()
                         .anyRequest().permitAll()
                 )
-                .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(logout -> logout
-                                .logoutUrl("/logout") // Customize logout URL if needed
-                                .logoutSuccessUrl("/") // Redirect to this URL after successful logout
-                                .invalidateHttpSession(true) // Invalidate HTTP session
-                                .deleteCookies("JSESSIONID") // Delete cookies upon logout
-                );
-
+                .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
     @Bean

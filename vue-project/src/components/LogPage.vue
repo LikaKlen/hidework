@@ -10,7 +10,9 @@ export default{
       users: [],
       userName: '',
       errorMessage: '',
-      userPassword: ''
+      userPassword: '',
+      passwordError:'',
+      loginError:''
     }
   },
   methods:{
@@ -20,6 +22,16 @@ export default{
         userName: this.userName,
         password: this.userPassword
       }
+      if (this.userName.length ==0 ) {
+        this.loginError = true;
+        this.errorMessage = "Неправильный логин";
+        return;
+      }else{this.loginError = false;}
+      if (this.userPassword.length ==0 ) {
+        this.passwordError = true;
+        this.errorMessage = "Пароль не верный";
+        return;
+      }else{this.passwordError = false;}
       try {
         const response = await api.post('/auth/signin', User);
         console.log('Успешно авторизован:',User);
@@ -27,6 +39,7 @@ export default{
       } catch (error) {
         
       }
+      
       
     },
     
@@ -60,9 +73,11 @@ export default{
         <h2>Вход на аккаунт</h2>
         <p><label for="text" class="floatLabel">Логин</label>
             <input type="text" v-model="userName" placeholder="Login">
+            <span class="error-message" v-if="loginError">Неправильный логин</span>
             </p>
            <p> <label for="password" class="floatLabel">Пароль</label>
-            <input type="password" v-model="userPassword" placeholder="password">
+            <input type="password" v-model="userPassword" placeholder="Password">
+            <span class="error-message" v-if="passwordError">Неправильный пароль</span>
             </p>
         </div>
         <div class="reg_Button">
@@ -80,7 +95,7 @@ export default{
   <h3>Hidework</h3>
 
   <p class="footer-links">
-    <a href="" class="link-1">Главная</a>
+    <a href="/home" class="link-1">Главная</a>
 
     <a href="">О Каталог</a>
 
@@ -235,7 +250,11 @@ header {
   input[type="text"]:focus,
   input[type="password"]:focus {
     background: #fff
-  }}
+  }.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}}
 .reg_Button{
   justify-content: center;
   display: flex;

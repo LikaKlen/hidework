@@ -2,21 +2,30 @@
 
 <script >
 export default{
-  name:'HomePage',
+  name:'AuthMain',
   data(){
     return{
         tilte: ""
     }
   },
   methods:{
-    page_reg(){
-      window.location.href="/reg"
-    },
-    page_log(){
-      window.location.href="/log"
+    
+    async logout() {
+      try {
+        // Отправляем запрос на сервер для выхода из аккаунта
+        await this.$axios.post('/logout');
+        // Очищаем хранилище токенов на стороне клиента (если используется)
+        localStorage.removeItem('token');
+        // Перенаправляем пользователя на страницу входа или другую страницу
+        window.location.href ="/home";
+      } catch (error) {
+        console.error('Ошибка при выходе из аккаунта:', error);
+      }
     }
   }
+   
 }
+
 
 </script>
 
@@ -33,7 +42,7 @@ export default{
         <li><a href="">Корзина</a></li>
         <li><a href=""></a></li>
         <li><a>Личный кабинет</a></li>
-        <li> <a>Выйти</a></li>
+        <li><button @click="logout">Выйти</button></li>
       </ul>
     </nav>
 
@@ -49,7 +58,7 @@ export default{
   <h3>Hidework</h3>
 
   <p class="footer-links">
-    <a href="" class="link-1">Главная</a>
+    <a href="/auth/main" class="link-1">Главная</a>
 
     <a href="">О Каталог</a>
 
@@ -302,7 +311,6 @@ line-height: 2;
 
 .footer-distributed .footer-center .tx1 a {
 color: rgb(255, 255, 255);
-background: -webkit-linear-gradient(#1a6dff, #c822ff);
 text-decoration: none;
 
 }

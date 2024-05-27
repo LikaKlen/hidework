@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.3'
 	id 'io.spring.dependency-management' version '1.1.4'
+
 }
 
 group = 'com.example'
@@ -15,6 +16,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	log4j
 }
 
 repositories {
@@ -36,6 +38,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'io.jsonwebtoken:jjwt:0.12.3'
+	log4j 'org.apache.logging.log4j:log4j-api:2.17.1'
+	log4j 'org.apache.logging.log4j:log4j-core:2.17.1'
+
+
+
+
 
 }
 

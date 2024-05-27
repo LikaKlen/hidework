@@ -30,13 +30,13 @@ public class JwtCore {
         return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody().getSubject();
     }
 
-    public String generateNewToken(String userName) {
-        return Jwts.builder().setSubject(userName)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date().getTime() + lifetime)))
-                .signWith(SignatureAlgorithm.HS256, secret)
-                .compact();
-    }
+//    public String generateNewToken(String userName) {
+//        return Jwts.builder().setSubject(userName)
+//                .setIssuedAt(new Date())
+//                .setExpiration(new Date((new Date().getTime() + lifetime)))
+//                .signWith(SignatureAlgorithm.HS256, secret)
+//                .compact();
+//    }
 
     public void addToBlacklist(String token) {
         blacklist.add(token);
