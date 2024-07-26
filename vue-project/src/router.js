@@ -3,6 +3,8 @@ import HomePage from "./components/HomePage.vue";
 import RegPage from "./components/RegPage.vue";
 import LogPage from "./components/LogPage.vue";
 import AuthMain from './components/AuthMain.vue';
+import Catalog from './components/Catalog.vue';
+
 //можно
 export default  createRouter({
     history:createWebHistory(),
@@ -11,6 +13,7 @@ export default  createRouter({
         {path:"/reg",component:RegPage},
         {path:"/log",component:LogPage},
         {path:"/auth/main",component:AuthMain},
+        {path:"/catalog",component:Catalog},
 
     ]
 })

@@ -19,7 +19,7 @@ public class JwtCore {
     private String secret;
     @Value("${hidework.app.lifetime}")
     private int lifetime;
-    private Set<String> blacklist = new HashSet<>();
+
     public String generateToken(UserDetails userDetails){
         return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
                 .setExpiration(new Date((new Date().getTime() + lifetime)))
@@ -30,20 +30,14 @@ public class JwtCore {
         return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody().getSubject();
     }
 
-//    public String generateNewToken(String userName) {
-//        return Jwts.builder().setSubject(userName)
-//                .setIssuedAt(new Date())
-//                .setExpiration(new Date((new Date().getTime() + lifetime)))
-//                .signWith(SignatureAlgorithm.HS256, secret)
-//                .compact();
-//    }
-
-    public void addToBlacklist(String token) {
-        blacklist.add(token);
+    public String generateNewToken(String userName) {
+        return Jwts.builder().setSubject(userName)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date().getTime() + lifetime)))
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
     }
 
-    public boolean isTokenBlacklisted(String token) {
-        return blacklist.contains(token);
-    }
+
 }
 

@@ -1,101 +1,105 @@
+
+
 <script >
-
-import api from './api/api.js';
-
 export default{
-  
   data(){
     
     return{
-      users: [],
-      userName: '',
+     product: [],
+      name: '',
+      description: '',
+      count:0,
+      material:'',
+      price:'', 
       errorMessage: '',
-      userPassword: '',
-      passwordError:'',
-      loginError:''
     }
   },
   methods:{
     
-    async signinUser() {
-      const User = {
-        userName: this.userName,
-        password: this.userPassword
-      }
-      if (this.userName.length ==0 ) {
-        this.loginError = true;
-        this.errorMessage = "Неправильный логин";
-        return;
-      }else{this.loginError = false;}
-      if (this.userPassword.length ==0 ) {
-        this.passwordError = true;
-        this.errorMessage = "Пароль не верный";
-        return;
-      }else{this.passwordError = false;}
-      try {
-        const response = await api.post('/auth/signin', User);
-        console.log('Успешно авторизован:',User);
-        window.location.href ="/auth/main";
-      } catch (error) {
-        
-      }
-      
-      
+    page_reg(){
+      window.location.href="/reg"
     },
-    
-    
-  },
-
-  
+    page_log(){
+      window.location.href="/log"
+    }
+  }
+   
 }
+
+
 </script>
 
 <template>
-<header>
+<div class="All">
+  
+  <header>
     <div class="logo">
       <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px"></a>
-      
     </div>
     <nav>
       <ul class="nav">
-        <li><a href="">Каталог</a></li>
+        <li><a href="/catalog">Каталог</a></li>
         <li><a href="">Корзина</a></li>
-        <li><a href="/log">Войти</a></li>
-        <li><a href="/reg">Регистрация</a></li>
+        <li><a href=""></a></li>
+        <li><a>Личный кабинет</a></li>
+        <li><button @click="logout">Выйти</button></li>
       </ul>
     </nav>
   </header>
   <main>
-  
-    <div class="page">
-    <div class="reg_window">
-        <div class="reg_input">
-        <h2>Вход на аккаунт</h2>
-        <p><label for="text" class="floatLabel">Логин</label>
-            <input type="text" v-model="userName" placeholder="Login">
-            <span class="error-message" v-if="loginError">Неправильный логин</span>
-            </p>
-           <p> <label for="password" class="floatLabel">Пароль</label>
-            <input type="password" v-model="userPassword" placeholder="Password">
-            <span class="error-message" v-if="passwordError">Неправильный пароль</span>
-            </p>
-        </div>
-        <div class="reg_Button">
-            <button class="regBT" @click="signinUser()">
-                Войти
-            </button>
-        </div>
-      </div>
-    </div>
+    <div class="text2">
+            <div class="slider midlle">
+              <div class="slides">
+                <input type="radio" name="r" id="r1" checked>
+                <input type="radio" name="r" id="r2">
+                <div class="slide s1"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\advertisement.jpg" alt=""></div>
+                <div class="slide"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\advertisement1.jpg"></div>
+                <div class="navigation">
+                  <label for="r1" class="bar"></label>
+                  <label for="r2" class="bar"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+    <div class="services">
+
+            <div class="catalog">
+                <h1>Каталог товаров</h1>
+            </div>
+            <div class="blocktwo">
+                <div class="block-item">
+                    <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Earrings.jpg" alt="">
+                    <h2>Серьги</h2>
+                    <p>в наличии</p>
+                    <p>1000₽</p>
+                    <a class="Record" href="">Добавить в корзину</a>
+                </div>
+                <div class="block-item">
+                    <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Beads.jpg" alt="">
+                    <h2>Бусы</h2>
+                    <p>в наличии</p>
+                    <p>1000₽</p>
+                    <a class="Record" href="">Добавить в корзину</a>
+                </div>
+                <div class="block-item">
+                    <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Bracelets.jpg" alt="">
+                    <h2>Браслет</h2>
+                    <p>в наличии</p>
+                    <p class="discount"><span>1000₽</span> 700₽ </p>
+                    <a class="Record" href="">Добавить в корзину</a>
+                </div>
+            </div>
+          </div>
+
   </main>
   <footer class="footer-distributed">
 
-<div class="footer-left">
+ <div class="footer-left">
 
   <h3>Hidework</h3>
 
   <p class="footer-links">
-    <a href="/home" class="link-1">Главная</a>
+    <a href="" class="link-1">Главная</a>
 
     <a href="">О Каталог</a>
 
@@ -104,6 +108,7 @@ export default{
     <a href=""></a>
 
   </p>
+
 </div>
 
 <div class="footer-center">
@@ -177,13 +182,19 @@ export default{
             d="M40.975,32.906c0,0,3.974-5.822,4.369-7.664C45.477,24.584,45.188,24,44.502,24 c0,0-2.29,0-3.448,0c-0.79,0-1.079,0.558-1.316,1.058c0,0-1.864,4.08-4.132,6.583c-0.728,0.809-0.914,1.107-1.316,1.107 c-0.324,0-0.29-0.216-0.29-0.946v-6.396C34,24.51,33.528,24,32.791,24h-5.527c-0.421,0-0.618,0.368-0.618,0.702 c0,0.843,1.356,1.156,1.356,3.44v4.711c0,0.948-0.119,1.316-0.566,1.316c-1.184,0-4.034-4.203-5.613-8.836 C21.505,24.387,21.13,24,20.236,24h-3.448c-0.5,0-0.869,0.466-0.869,0.966c0,0.921,1.079,5.247,5.317,10.959 c2.843,3.843,6.711,5.953,10.08,5.953c2.053,0,2.684-0.311,2.684-1.18V37.75c0-0.737,0.158-1.053,0.579-1.053 c0.474,0,1.244,0.198,3.198,2.125C40.095,41.033,40.187,42,41.45,42h3.869c0.395,0,0.763-0.23,0.763-0.888 c0-0.869-1.132-2.444-2.869-4.287c-0.711-0.947-1.869-1.985-2.237-2.459C40.45,33.813,40.607,33.485,40.975,32.906z" />
         </svg></i>
     </a>
+
   </div>
   <p class="footer-company-name">Hidework © 2024</p>
 </div>
+
+
 </footer>
+</div>
+  
 </template>
 
 <style scoped>
+
 header {
   width: 100%;
   max-width: 1180px;
@@ -196,6 +207,12 @@ header {
   box-sizing: border-box;
   background-color: rgb(180,180,166)
 }
+.text {
+  text-decoration: none;
+  color: #000;
+  font-size: 30px;
+}
+
 .nav {
   list-style-type: none;
   display: flex;
@@ -209,83 +226,167 @@ header {
   color: #000;
 }
 .size {
-  font-size: 80px;
+  font-size: 70px;
+  
+}
+/* .page{
+  width: 100%;
+  max-width: 1180px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  row-gap: 50px;
+} */
+.text{
+  
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+}
+.text2 {
+width: 100%;
+max-width: 1180px;
+margin: 0 auto;
+padding-left: 15px;
+padding-right: 15px;
+justify-content: space-between;
+align-items: center;
+
+}
+.slider {
+  max-width: 1100px;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border: 0px solid rgb(255, 255, 255);
+  position: relative;
 }
 
-.reg_window{
-  background: #fff;
-  padding: 4em 4em 2em;
-  max-width: 400px;
-  margin: 50px auto 0;
-  box-shadow: 0 0 1em  rgb(207, 173, 147);
-  border-radius: 2px;
-  h2 {
-    margin:0 0 50px 0;
-    padding:10px;
-    text-align:center;
-    font-size:30px;
-    color:darken(#e5e5e5, 50%);
-    border-bottom:solid 1px #e5e5e5;
-  }
+.middle {
+  position: absolute;
+  top: -32.5%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
 
-  p {
-    margin: 0 0 3em 0;
-    position: relative;
-  }
-  input {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    outline: none;
-    margin:0;
-  }
-  input[type="text"],
-  input[type="password"] {
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    font-size: 1.6em;
-    padding: .8em .5em;
-    border-radius: 2px;
-  }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    background: #fff
-  }.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}}
-.reg_Button{
-  justify-content: center;
+.navigation {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: tanslrate3d(-50%, 0, 0);
   display: flex;
 }
-  .regBT{
- text-align:center;
- font-size:30px;
- border-bottom:solid 1px #e5e5e5;
- border-radius: 2px;
- border: none;
- cursor: pointer;
- display: block;
- font-size: 2em;
- line-height: 1.6em;
- margin: 2em 0 0;
- outline: none;
-background: rgba(148,175,101,1);
-}
-.log{
-  height: auto;
-  width: auto;
-  align-items: center;
-  justify-content:space-around;
-  margin-bottom:3vh;
-}
-.reg{
-  height: auto;
-  width: auto;
-}
-.footer-distributed {
 
+.bar {
+  height: 8px;
+  width: 30px;
+  margin: 6px;
+  cursor: pointer;
+  background-color: rgb(2, 2, 2);
+  opacity: .5;
+  border-radius: 10px;
+  transition: all .4s ease;
+}
+
+.bar:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+input[name="r"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+.slides {
+  width: 400%;
+  height: 100%;
+  display: flex;
+  position: relativ;
+}
+
+.slide {
+  width: 25%;
+  transition: all .6s ease;
+  position: relativ;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#r1:checked~.s1 {
+  margin-left: 0;
+}
+
+#r2:checked~.s1 {
+  margin-left: -25%;
+}
+
+.services {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.catalog {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+}
+
+.blocktwo {
+  width: 100%;
+  max-width: 1180px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  row-gap: 50px;
+}
+
+.blocktwo .block-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.block-item h2 {
+  margin: 15px 0;
+}
+
+.block-item p {
+  margin: 0 0 10px 0;
+}
+
+.block-item .discount {
+  color: red;
+}
+
+.block-item span {
+  color: #000;
+  text-decoration: line-through;
+}
+
+
+
+.footer-distributed {
 background: rgba(71, 59, 50);
 box-shadow:  rgba(71, 59, 50);
 width: 100%;
@@ -427,6 +528,7 @@ line-height: 35px;
 margin-right: 30px;
 margin-bottom: 15px;
 }
+
 @keyframes gradient {
     0% {
         background-position: 80% 0%;
@@ -440,4 +542,5 @@ margin-bottom: 15px;
   }
 
 </style>
+
 

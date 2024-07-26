@@ -3,6 +3,10 @@ package com.example.hidework.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
+import static jakarta.persistence.FetchType.EAGER;
+
 
 @Entity
 @Data
@@ -18,12 +22,10 @@ public class User{
     @Column(name = "email")
     private String email;
     @Column(name = "password")
-    public String password;
+    private String password;
     @Column(name = "role")
-    public String role;
-//    @ManyToOne
-//    @JoinColumn(name = "role_id", referencedColumnName = "roleId")
-//    private Role role;
-
+    private String role;
+    @ManyToMany(fetch = EAGER)
+    private List<Role> roles;
 
 }

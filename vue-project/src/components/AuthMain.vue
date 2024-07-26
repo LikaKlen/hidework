@@ -1,44 +1,49 @@
 
 
 <script >
-export default{
-  name:'AuthMain',
-  data(){
-    return{
-        tilte: ""
+import api from "./api/api.js";
+export default {
+  
+  name: 'AuthMain',
+  data() {
+    return {
+     
     }
   },
-  methods:{
-    
+  methods: {
     async logout() {
       try {
-        // Отправляем запрос на сервер для выхода из аккаунта
-        await this.$axios.post('/logout');
-        // Очищаем хранилище токенов на стороне клиента (если используется)
-        localStorage.removeItem('token');
-        // Перенаправляем пользователя на страницу входа или другую страницу
-        window.location.href ="/home";
+        function clearAllCookies() {
+         var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf('=');
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+          }
+        }
+        // Проверяем текущий URL и очищаем куки при переходе по ссылке
+        if (window.location.pathname != '/log') {
+          clearAllCookies();
+          window.location.href ="/log";
+        }
       } catch (error) {
-        console.error('Ошибка при выходе из аккаунта:', error);
+        console.error('Ошибка при попытке выхода:', error);
       }
     }
   }
-   
 }
-
-
 </script>
 
 <template>
 <div class="All">
-  
   <header>
     <div class="logo">
-      <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px">
+      <a href="/auth/main"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px"></a>
     </div>
     <nav>
       <ul class="nav">
-        <li><a href="">Каталог</a></li>
+        <li><a href="/catalog">Каталог</a></li>
         <li><a href="">Корзина</a></li>
         <li><a href=""></a></li>
         <li><a>Личный кабинет</a></li>
@@ -47,10 +52,39 @@ export default{
     </nav>
 
   </header>
-  <main>
-    
-    
+  <main id="main-content">
+    <div class="page">
+      <div class="name">
+        <div>
+          <div class="size">
+            <h>Вы успешно зарегистрировались {{ this.userName }}!</h> 
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+  <section>
+    <div class="text"><h1>Скидки этого месяца!</h1></div>
+        <div class="page1">
+          <div class="block">
+            <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Earrings.jpg">
+            <h2>Серьги</h2>
+            <p class="discount"><span>1000₽</span> 700₽ </p>
+          </div>
+          <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Beads.jpg">
+            <h2>Бусы</h2>
+            <p class="discount"><span>1200₽</span> 900₽ </p>
+          </div>
+          <div class="block-item">
+            <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\Bracelets.jpg">
+            <h2>Браслеты</h2>
+            <p class="discount"><span>1500₽</span> 1000₽ </p>
+          </div>
+        </div>
+        </div>
+ </section>
   <footer class="footer-distributed">
 
 <div class="footer-left">
@@ -184,6 +218,73 @@ header {
   text-decoration: none;
   color: #000;
 }
+.size {
+  font-size: 70px;
+  
+}
+.page{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+}
+.page1{
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.text{
+  
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+}
+.block{
+  width: 100%;
+  max-width: 1180px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  row-gap: 50px;
+}
+
+.block .block-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.block-item h2 {
+  margin: 15px 0;
+}
+
+.block-item p {
+  margin: 0 0 10px 0;
+}
+
+.block-item .discount {
+  color: red;
+}
+
+.block-item span {
+  color: #000;
+  text-decoration: line-through;
+}
+
 .Reg_log{
   width: 100%;
   height: 100%;

@@ -32,7 +32,7 @@ public class AdminController {
 
     }
 
-    @DeleteMapping("deluser/{id}")
+    @DeleteMapping("/deluser/{id}")
     public ResponseEntity deleteUserById(@PathVariable("id") long id) {
         dataAccessLayer.delUserById(id);
         return ResponseEntity.ok("");

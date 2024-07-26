@@ -26,11 +26,11 @@ export default{
 
   <header>
     <div class="logo">
-      <img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px">
+      <a href="/home"><img src="C:\Users\Admin\Downloads\hidework\vue-project\src\components\assets\picture\image2.png" height="100px"></a>
     </div>
     <nav>
       <ul class="nav">
-        <li><a href="">Каталог</a></li>
+        <li><a href="/catalog">Каталог</a></li>
         <li><a href="">Корзина</a></li>
         <li><a href="/log">Войти</a></li>
         <li>  <a href="/reg">Регистрация</a></li>
